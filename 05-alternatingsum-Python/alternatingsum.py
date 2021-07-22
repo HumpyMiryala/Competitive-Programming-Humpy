@@ -6,6 +6,8 @@
 
 
 def fun_alternatingsum(a): 
+    for i in range(0:):
+        
 	return 0
 
 
