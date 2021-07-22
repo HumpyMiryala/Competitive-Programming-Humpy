@@ -6,8 +6,11 @@
 
 
 def fun_alternatingsum(a): 
-    for i in range(0:):
-        
-	return 0
-
+	altSum=0
+	for i in range(len(a)):
+		if i%2==0:  #i  takes index not a value 
+			altSum+=a[i]
+		else:
+			altSum-=a[i]
+	return altSum
 
