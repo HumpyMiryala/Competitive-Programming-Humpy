@@ -13,29 +13,63 @@
 # in the same order they appeared in the original data. 
 # If nobody wins (there is no data), return None (not the 
 # string "None"). So, for example:
-
 def topScorer(data):
-    # Your code goes here...
-    return ""
-
+	if data == "":
+		return None
+	# Your code goes here...
+	lis = data.splitlines()
+	# print(lis)
+	s = ""
+	prev =0
+	temp = ""
+	for i in range(len(lis)):
+		sum = 0
+		l = lis[i].split(",")
+		# print(l)
+		
+		
+		for j in range(1, len(l)):
+			sum+= int(l[j])
+			# temp = l[0]
+		# print(sum, temp)
+		if sum > prev:
+			prev = sum
+			temp = l[0]
+			
+			
+		elif sum == prev:
+			
+			if s == "":
+				s+=temp + ","+ l[0]
+			else:
+				if temp not in s:
+					s+="," + temp 
+				s+= ","+ l[0]
+	# print(temp, sum)       
+	# print(s) 
+	if len(s)>1:
+		return s   
+	return temp
+ 
 data = '''\
 Fred,10,20,30,40
 Wilma,10,20,30
 '''
 assert(topScorer(data) == 'Fred')
-
+ 
 data = '''\
 Fred,10,20,30
 Wilma,10,20,30,40
 '''
 assert(topScorer(data) == 'Wilma')
-
+ 
 data = '''\
 Fred,11,20,30
 Wilma,10,20,30,1
 '''
+# print(topScorer(data))
 assert(topScorer(data) == 'Fred,Wilma')
-
+ 
 assert(topScorer('') == None)
 print("All test cases passed...!")
 # Hint: you may want to use both splitlines() and split(',') here!
